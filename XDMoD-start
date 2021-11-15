@@ -24,6 +24,7 @@ EOT
 fi
 
 # Start Apache:
+setsebool -P httpd_can_network_connect 1
 httpd -k start
 
 # Start MySQL:

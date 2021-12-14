@@ -29,7 +29,7 @@ RUN     yum -y update && \
         yum -y install  epel-release && \
         yum -y install  sudo wget gmp-devel cronie logrotate \
                         coreutils shadow-utils tar xz bzip2 gzip zip jq \
-                        libreoffice chromium-headless librsvg2-tools
+                        libreoffice chromium-headless librsvg2-tools openssh-clients
 RUN     set -o pipefail && echo "root:${ROOT_PASSWORD}" | chpasswd
 
 #

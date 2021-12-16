@@ -23,7 +23,7 @@ LABEL   version="9.5.0" \
         maintainer="frey@udel.edu"
 
 # Mongo repository
-COPY    mongodb-4.4.repo /etc/yum.repos.d
+COPY    mongodb-org-4.4.repo /etc/yum.repos.d
 
 #
 # Install tools, libraries:

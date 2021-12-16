@@ -22,6 +22,9 @@ LABEL   version="9.5.0" \
         description="XDMoD bundle containing database and web server" \
         maintainer="frey@udel.edu"
 
+# Mongo repository
+COPY    mongodb-4.4.repo /etc/yum.repos.d
+
 #
 # Install tools, libraries:
 #
@@ -29,7 +32,7 @@ RUN     yum -y update && \
         yum -y install  epel-release && \
         yum -y install  sudo wget gmp-devel cronie logrotate \
                         coreutils shadow-utils tar xz bzip2 gzip zip jq \
-                        libreoffice chromium-headless librsvg2-tools openssh-clients
+                        libreoffice chromium-headless librsvg2-tools openssh-clients mongodb-org-shell
 
 RUN     set -o pipefail && echo "root:${ROOT_PASSWORD}" | chpasswd
 
@@ -62,9 +65,7 @@ EXPOSE  8080/tcp
 #
 # Ensure a mountpoint/directory exists for the data ingest pipeline:
 #
-RUN     mkdir --parents --mode=0755 /var/lib/XDMoD-ingest-queue/in
-RUN     mkdir --parents --mode=0755 /var/lib/XDMoD-ingest-queue/out
-RUN     mkdir --parents --mode=0755 /var/lib/XDMoD-ingest-queue/error
+RUN     mkdir --parents --mode=0755 /var/lib/XDMoD-ingest-queue/{in,out,error} /home/tntech.edu/supremm
 
 #
 # Command to execute when container is started:

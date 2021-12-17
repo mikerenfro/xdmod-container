@@ -23,7 +23,7 @@ LABEL   version="9.5.0" \
         maintainer="renfro@tntech.edu"
 
 # Mongo repository
-COPY    mongodb-org-4.4.repo /etc/yum.repos.d
+COPY    mongodb-org-3.6.repo /etc/yum.repos.d
 
 #
 # Install tools, libraries:

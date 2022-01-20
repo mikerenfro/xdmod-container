@@ -32,7 +32,7 @@ RUN     yum -y update && \
         yum -y install  epel-release && \
         yum -y install  sudo wget gmp-devel cronie logrotate \
                         coreutils shadow-utils tar xz bzip2 gzip zip jq \
-                        libreoffice chromium-headless librsvg2-tools openssh-clients mongodb-org-shell
+                        libreoffice chromium-headless librsvg2-tools openssh-clients mongodb-org-shell 
 
 RUN     set -o pipefail && echo "root:${ROOT_PASSWORD}" | chpasswd
 
@@ -55,6 +55,8 @@ RUN     yum -y install \
         https://github.com/ubccr/xdmod/releases/download/v9.5.0/xdmod-9.5.0-1.0.el7.noarch.rpm \
         https://github.com/ubccr/xdmod-supremm/releases/download/v9.5.0/xdmod-supremm-9.5.0-1.0.el7.noarch.rpm \
         https://github.com/ubccr/supremm/releases/download/1.4.1/supremm-1.4.1-1.el7.x86_64.rpm && \
+        yum -y install python-pip && \
+        pip install "pymongo==3.*" --upgrade && \
         yum clean all
 
 #

@@ -49,6 +49,10 @@ RUN     yum -y install  httpd php php-cli php-gd php-gmp \
 RUN     yum -y install  mariadb-server mariadb
 
 #
+# Install NodeJS repo
+#
+RUN     curl -sL https://rpm.nodesource.com/setup_14.x | bash -
+#
 # Install XDMoD:
 #
 RUN     yum -y install \
